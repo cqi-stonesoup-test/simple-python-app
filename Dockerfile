@@ -1,4 +1,5 @@
-FROM quay.io/devfile/python:slim@sha256:54924a2ee4a2ef17028ae076ce38e59b3f4054353a5c9f9318dfaee60377532c
+FROM registry.access.redhat.com/ubi9/ubi-minimal:9.3-1552
+RUN microdnf install -y python3.11
 WORKDIR /src
 COPY app.py .
-CMD ["python3", "app.py"]
+CMD ["python3.11", "app.py"]
