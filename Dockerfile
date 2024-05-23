@@ -1,5 +1,4 @@
-FROM registry.access.redhat.com/ubi9/ubi-minimal:9.4-949.1714662671
-RUN microdnf install -y python3.11
+FROM registry.access.redhat.com/rhel8/python-312@sha256:571e4e7c0b03ccea61eac9d4558cfa5e811a661eb3452ca3070a6e0c82192329
 WORKDIR /src
 COPY app.py .
-CMD ["python3.11", "app.py"]
+CMD ["python3", "app.py"]
