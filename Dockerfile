@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/rhel8/python-312@sha256:571e4e7c0b03ccea61eac9d4558cfa5e811a661eb3452ca3070a6e0c82192329
+FROM registry.access.redhat.com/rhel8/python-312@sha256:d02a109e640ea9320e704aa74e154003b4f9624699a940c46be3127c96a7eac5
 WORKDIR /src
 COPY app.py .
 CMD ["python3", "app.py"]
