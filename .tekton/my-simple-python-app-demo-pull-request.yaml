@@ -19,7 +19,7 @@ metadata:
 spec:
   params:
   - name: dockerfile
-    value: Dockerfile
+    value: https://raw.githubusercontent.com/cqi-stonesoup-test/simple-python-app/main/Dockerfile
   - name: git-url
     value: '{{source_url}}'
   - name: image-expires-after
