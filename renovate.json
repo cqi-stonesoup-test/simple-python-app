@@ -3,15 +3,9 @@
   "extends": [
     "config:recommended"
   ],
-  "customManagers": [
+  "docker-compose": [
     {
-      "customType": "regex",
-      "fileMatch": ["^container-compose.yaml$"],
-      "matchStrings": [
-        "^\\s+image: \"(?<depName>[a-zA-Z0-9_]+):(?<currentValue>[0-9.]+)\""
-      ],
-      "autoReplaceStringTemplate": "image: {{{depName}}}:{{{newValue}}}",
-      "datasourceTemplate": "docker"
+      "fileMatch": ["^container-compose\\.yaml$"]
     }
   ]
 }
