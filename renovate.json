@@ -8,7 +8,7 @@
       "customType": "regex",
       "fileMatch": ["^container-compose.yaml$"],
       "matchStrings": [
-        "image: \"(?<depName>[a-zA-Z0-9_]):(?<currentValue>[0-9.]+)\""
+        "image: \"(?<depName>[a-zA-Z0-9_]+):(?<currentValue>[0-9.]+)\""
       ],
       "autoReplaceStringTemplate": "image: {{{depName}}}:{{{newValue}}}",
       "datasourceTemplate": "docker"
