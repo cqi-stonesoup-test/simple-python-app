@@ -3,9 +3,7 @@
   "extends": [
     "config:recommended"
   ],
-  "docker-compose": [
-    {
-      "fileMatch": ["^container-compose\\.yaml$"]
-    }
-  ]
+  "docker-compose": {
+    "fileMatch": ["^container-compose\\.yaml$"]
+  }
 }
