@@ -4,7 +4,12 @@
     "config:recommended"
   ],
   "docker-compose": {
-    "fileMatch": ["^container-compose\\.yaml$"],
-    "allowedVersions": "<11.5.0"
-  }
+    "fileMatch": ["^container-compose\\.yaml$"]
+  },
+  "packageRules": [
+    {
+      "matchPackageNames": ["mariadb"],
+      "allowedVersions": ">=11.4.0, <11.5.0"
+    }
+  ]
 }
