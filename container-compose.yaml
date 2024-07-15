@@ -1,0 +1,20 @@
+version: "3"
+
+# Please note that, this container-compose is only for test latest image built
+# from development branch and prod image built from released version.
+
+services:
+  db:
+    image: "mariadb:10.4.14"
+    volumes:
+    - "db_data:/var/lib/mysql"
+    restart: always
+    environment:
+      MYSQL_DATABASE: mydb
+      MYSQL_ROOT_PASSWORD: pass
+    command: >
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+
+volumes:
+  db_data:
