@@ -36,6 +36,8 @@ spec:
     value: 'pip'
   - name: build-source-image
     value: 'true'
+  - name: build-args
+    value: ["author=tester", "team=Testing"]
   pipelineSpec:
     finally:
     - name: show-sbom
@@ -127,6 +129,9 @@ spec:
         during build
       name: build-args-file
       type: string
+    - name: build-args
+      type: array
+      default: []
     results:
     - description: ""
       name: IMAGE_URL
@@ -231,6 +236,8 @@ spec:
         value: $(tasks.clone-repository.results.commit)
       - name: BUILD_ARGS_FILE
         value: $(params.build-args-file)
+      - name: BUILD_ARGS
+        value: ["$(params.build-args[*])"]
       runAfter:
       - prefetch-dependencies
       taskRef:
