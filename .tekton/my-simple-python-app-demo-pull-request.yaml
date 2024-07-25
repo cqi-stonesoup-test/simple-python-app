@@ -44,7 +44,7 @@ spec:
     - name: url
       value: https://github.com/cqi-stonesoup-test/simple-python-app
     - name: revision
-      value: main
+      value: reference-pipeline-by-git-resolver
     - name: pathInRepo
       value: ci/pipelines/common-build-pipeline.yaml
   taskRunTemplate: {}
