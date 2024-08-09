@@ -21,5 +21,18 @@
       "allowedVersions": "<11.5.0",
       "versioning": "docker"
     }
+  ],
+
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["\\.yaml$", "\\.yml$"],
+      "includePaths": ["tasks/**"],
+      "matchStrings": [
+        "[\\s]+value:\\s+(?<depName>quay\\.io/konflux-ci/buildah)(:[^\\s]+)?@(?<currentValue>sha256:[a-f0-9]{64})"
+      ],
+      "autoReplaceStringTemplate": "value: {{{depName}}}:{{{newValue}}}",
+      "datasourceTemplate": "docker"
+    }
   ]
 }
