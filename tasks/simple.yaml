@@ -1,0 +1,8 @@
+
+definition:
+- name: build
+  image: quay.io/konflux-ci/buildah:latest@sha256:9ef792d74bcc1d330de6be58b61f2cdbfa1c23b74a291eb2136ffd452d373050
+- name: next-step
+  env:
+  - name: BUILDER_IMAGE
+    value: quay.io/konflux-ci/buildah:latest@sha256:9ef792d74bcc1d330de6be58b61f2cdbfa1c23b74a291eb2136ffd452d373050
