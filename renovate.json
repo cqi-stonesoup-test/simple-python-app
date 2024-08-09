@@ -28,8 +28,9 @@
       "customType": "regex",
       "fileMatch": ["task/[^\\s]+\\.ya?ml$"],
       "matchStrings": [
-        "value:\\s+(?<depName>quay\\.io/konflux-ci/buildah)(:[^\\s]+)?@(?<currentValue>sha256:[a-f0-9]{64})"
+        "[\\s]+value:\\s+(?<depName>quay\\.io/konflux-ci/buildah)(:[^\\s]+)?@(?<currentValue>sha256:[a-f0-9]{64})"
       ],
+      "autoReplaceStringTemplate": "value: {{{depName}}}:{{{newValue}}}",
       "datasourceTemplate": "docker"
     }
   ]
