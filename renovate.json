@@ -31,7 +31,7 @@
         "value:\\s+(?<depName>quay\\.io/konflux-ci/buildah):latest@(?<currentValue>sha256:[a-f0-9]{64})"
       ],
       "autoReplaceStringTemplate": "value: {{{depName}}}:{{{newValue}}}",
-      "datasourceTemplate": "docker"
+      "datasourceTemplate": "tekton"
     }
   ]
 }
