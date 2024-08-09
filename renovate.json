@@ -3,14 +3,23 @@
   "extends": [
     "config:recommended"
   ],
+
+  "tekton": {
+    "fileMatch": ["\\.yaml$", "\\.yml$"],
+    "includePaths": [
+      "tasks/**",
+    ]
+  },
+
   "docker-compose": {
     "fileMatch": ["^container-compose\\.yaml$"]
   },
+
   "packageRules": [
     {
       "matchPackageNames": ["mariadb"],
       "allowedVersions": "<11.5.0",
       "versioning": "docker"
     }
-  ]
+  ],
 }
