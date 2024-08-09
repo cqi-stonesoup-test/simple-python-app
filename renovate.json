@@ -26,8 +26,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["\\.yaml$", "\\.yml$"],
-      "includePaths": ["tasks/**"],
+      "fileMatch": ["task/[^\\s]+\\.ya?ml$"],
       "matchStrings": [
         "[\\s]+value:\\s+(?<depName>quay\\.io/konflux-ci/buildah)(:[^\\s]+)?@(?<currentValue>sha256:[a-f0-9]{64})"
       ],
