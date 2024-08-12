@@ -28,10 +28,10 @@
       "customType": "regex",
       "fileMatch": ["task/[^\\s]+\\.ya?ml$"],
       "matchStrings": [
-        "value:\\s+(?<depName>quay\\.io/konflux-ci/buildah):latest@(?<currentValue>sha256:[a-f0-9]{64})"
+        "value:\\s+(?<depName>quay\\.io/konflux-ci/buildah):(?<currentValue>latest)@(?<currentDigest>sha256:[a-f0-9]{64})"
       ],
-      "autoReplaceStringTemplate": "value: {{{depName}}}:{{{newValue}}}",
-      "datasourceTemplate": "tekton"
+      "autoReplaceStringTemplate": "value: {{depName}}{{#if newValue}}:{{newValue}}{{/if}}{{#if newDigest}}@{{newDigest}}{{/if}}",
+      "datasourceTemplate": "docker"
     }
   ]
 }
