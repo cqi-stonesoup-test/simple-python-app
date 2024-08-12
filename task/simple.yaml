@@ -5,4 +5,4 @@ definition:
 - name: next-step
   env:
   - name: BUILDER_IMAGE
-    value: quay.io/konflux-ci/buildah:latest@sha256:7cb5a35b7fe44e397fbf3b834f3bd8dcd9403a7c0a0b51469e6ec75b107d0846
+    value: quay.io/konflux-ci/buildah:latest@sha256:9ef792d74bcc1d330de6be58b61f2cdbfa1c23b74a291eb2136ffd452d373050
