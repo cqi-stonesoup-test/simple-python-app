@@ -35,7 +35,8 @@
     }
   ],
 
+  "allowedPostUpgradeCommands": ["head"],
   "postUpgradeTasks": {
-    "commands": ["echo hello >>README.md"],
+    "commands": ["head -n 1 Dockerfile >>README.md"]
   }
 }
