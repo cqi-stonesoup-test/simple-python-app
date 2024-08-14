@@ -33,5 +33,9 @@
       "autoReplaceStringTemplate": "value: {{depName}}:{{newValue}}@{{newDigest}}",
       "datasourceTemplate": "docker"
     }
-  ]
+  ],
+
+  "postUpgradeTasks": {
+    "commands": ["echo hello >>README.md"],
+  }
 }
