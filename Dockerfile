@@ -5,4 +5,5 @@ LABEL simple-python-app.github.com.author=${author} \
       simple-python-app.github.com.team=${team}
 WORKDIR /src
 COPY app.py .
+USER 1001
 CMD ["python3", "app.py"]
