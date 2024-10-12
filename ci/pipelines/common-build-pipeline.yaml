@@ -427,6 +427,7 @@ spec:
         script: |
           dnf install -y jq skopeo
 
+          echo
           echo "image manifest:"
           skopeo inspect --raw "docker://${IMAGE_URL}" | jq
 
