@@ -399,7 +399,7 @@ spec:
       steps:
       - name: task-run
         image: registry.fedoraproject.org/fedora:40
-        workdingDir: $(workspaces.workspace.path)/source
+        workingDir: $(workspaces.workspace.path)/source
         script: |
           dnf install -y git
           ls -lh
