@@ -32,7 +32,7 @@ spec:
   - name: prefetch-input
     value: 'pip'
   - name: build-source-image
-    value: 'true'
+    value: 'false'
   pipelineRef:
     resolver: git
     params:
