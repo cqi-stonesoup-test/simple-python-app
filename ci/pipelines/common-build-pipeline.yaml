@@ -395,6 +395,8 @@ spec:
       resolver: bundles
 
   - name: custom-task
+    runAfter:
+    - clone-repository
     taskSpec:
       steps:
       - name: task-run
