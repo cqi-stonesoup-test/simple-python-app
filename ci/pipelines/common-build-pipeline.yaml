@@ -393,6 +393,24 @@ spec:
       - name: kind
         value: task
       resolver: bundles
+
+  - name: custom-task
+    taskSpec:
+      steps:
+        - name: task-run
+          image: registry.fedoraproject.org/fedora:40
+          workdingDir: $(workspaces.workspace.path)/source
+          script: |
+            dnf install -y git
+            ls -lh
+            echo "tags:"
+            git tag
+      workspaces:
+      - workspace
+    workspaces:
+    - name: workspace
+      workspace: workspace
+
   workspaces:
   - name: workspace
   - name: git-auth
