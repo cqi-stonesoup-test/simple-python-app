@@ -206,7 +206,7 @@ spec:
       value: ["$(params.build-args[*])"]
     - name: LABELS
       value:
-      - "org.opencontainers.image.authors=me"
+      - "org.opencontainers.image.authors=chen"
       - "org.opencontainers.image.licenses=Apache-2.0"
       - "org.opencontainers.image.source=https://github.com/cqi-stonesoup-test/simple-python-app"
     runAfter:
