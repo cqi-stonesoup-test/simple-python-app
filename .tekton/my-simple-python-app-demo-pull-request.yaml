@@ -35,7 +35,7 @@ spec:
   - name: prefetch-input
     value: 'pip'
   - name: build-source-image
-    value: 'true'
+    value: 'false'
   - name: build-args
     value: ["author=tester", "team=Testing"]
   pipelineRef:
