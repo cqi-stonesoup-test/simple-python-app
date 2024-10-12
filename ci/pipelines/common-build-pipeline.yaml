@@ -397,16 +397,16 @@ spec:
   - name: custom-task
     taskSpec:
       steps:
-        - name: task-run
-          image: registry.fedoraproject.org/fedora:40
-          workdingDir: $(workspaces.workspace.path)/source
-          script: |
-            dnf install -y git
-            ls -lh
-            echo "tags:"
-            git tag
+      - name: task-run
+        image: registry.fedoraproject.org/fedora:40
+        workdingDir: $(workspaces.workspace.path)/source
+        script: |
+          dnf install -y git
+          ls -lh
+          echo "tags:"
+          git tag
       workspaces:
-      - workspace
+      - name: workspace
     workspaces:
     - name: workspace
       workspace: workspace
