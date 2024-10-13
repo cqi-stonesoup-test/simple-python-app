@@ -96,6 +96,11 @@ spec:
   - name: build-args
     type: array
     default: []
+
+  - name: additional-tags
+    type: array
+    default: []
+
   results:
   - description: ""
     name: IMAGE_URL
@@ -383,10 +388,13 @@ spec:
       operator: in
       values:
       - "false"
+
   - name: apply-tags
     params:
     - name: IMAGE
       value: $(tasks.build-container.results.IMAGE_URL)
+    - name: ADDITIONAL_TAGS
+      value: ["$(params.additional-tags[*])"]
     runAfter:
     - build-container
     taskRef:
