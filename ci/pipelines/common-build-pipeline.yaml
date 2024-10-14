@@ -96,6 +96,11 @@ spec:
   - name: build-args
     type: array
     default: []
+
+  - name: additional-tags
+    type: array
+    default: []
+
   results:
   - description: ""
     name: IMAGE_URL
@@ -383,10 +388,13 @@ spec:
       operator: in
       values:
       - "false"
+
   - name: apply-tags
     params:
     - name: IMAGE
       value: $(tasks.build-container.results.IMAGE_URL)
+    - name: ADDITIONAL_TAGS
+      value: ["$(params.additional-tags[*])"]
     runAfter:
     - build-container
     taskRef:
@@ -394,7 +402,7 @@ spec:
       - name: name
         value: apply-tags
       - name: bundle
-        value: quay.io/redhat-appstudio-tekton-catalog/task-apply-tags:0.1@sha256:66bb1c0294595ed9e26bbb6a76499e43ca23b9665fcf6c71006c0c2647f0b29d
+        value: quay.io/konflux-ci/tekton-catalog/task-apply-tags:0.1@sha256:f485e250fb060060892b633c495a3d7e38de1ec105ae1be48608b0401530ab2c
       - name: kind
         value: task
       resolver: bundles
@@ -407,11 +415,13 @@ spec:
       - name: task-run
         image: registry.fedoraproject.org/fedora:40
         workingDir: $(workspaces.workspace.path)/source
+        args: ["$(params.additional-tags[*])"]
         script: |
           dnf install -y git
           ls -lh
           echo "tags:"
           git tag
+          echo "additional tags: $@"
       workspaces:
       - name: workspace
     workspaces:

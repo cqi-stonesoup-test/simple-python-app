@@ -38,6 +38,9 @@ spec:
     value: 'false'
   - name: build-args
     value: ["author=tester", "team=Testing"]
+  - name: additional-tags
+    value:
+    - devel
   pipelineRef:
     resolver: git
     params:
