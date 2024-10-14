@@ -415,11 +415,13 @@ spec:
       - name: task-run
         image: registry.fedoraproject.org/fedora:40
         workingDir: $(workspaces.workspace.path)/source
+        args: ["$(params.additional-tags[*])"]
         script: |
           dnf install -y git
           ls -lh
           echo "tags:"
           git tag
+          echo "additional tags: $@"
       workspaces:
       - name: workspace
     workspaces:
