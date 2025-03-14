@@ -1,2 +1,2 @@
-FROM registry.access.redhat.com/ubi9/ubi-minimal:9.5-1734497536@sha256:94b434a29a894129301f6ff52dbddb19422fc800a109170c634b056da8cd704f
+FROM registry.access.redhat.com/ubi9/ubi-minimal:9.5-1741850109@sha256:8b314e254e9ab9a7a08b675fcfd3ed66a2943eeda7b26395210d451569976b9b
 CMD ["echo", "hello"]
