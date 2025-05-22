@@ -402,7 +402,7 @@ spec:
         operator: in
         values:
         - "false"
-    - name: sast-coverity-check
+    - name: sast-coverity-check-oci-ta
       params:
       - name: image-url
         value: $(tasks.build-image-index.results.IMAGE_URL)
