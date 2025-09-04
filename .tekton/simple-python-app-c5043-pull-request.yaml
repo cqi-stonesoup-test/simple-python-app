@@ -112,6 +112,9 @@ spec:
         VMs
       name: privileged-nested
       type: string
+    - name: mark-pipeline
+      type: string
+      default: project-name
     results:
     - description: ""
       name: IMAGE_URL
