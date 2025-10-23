@@ -29,6 +29,8 @@ spec:
     value: 5d
   - name: dockerfile
     value: Dockerfile
+  - name: additional-tags
+    value: ["rev-{{revision}}"]
   pipelineSpec:
     description: |
       This pipeline is ideal for building container images from a Containerfile while maintaining trust after pipeline customization.
@@ -115,6 +117,9 @@ spec:
     - name: mark-pipeline
       type: string
       default: project-name
+    - name: additional-tags
+      type: array
+      default: []
     results:
     - description: ""
       name: IMAGE_URL
@@ -539,6 +544,8 @@ spec:
         value: $(tasks.build-image-index.results.IMAGE_URL)
       - name: IMAGE_DIGEST
         value: $(tasks.build-image-index.results.IMAGE_DIGEST)
+      - name: ADDITIONAL_TAGS
+        value: $(params.additional-tags[*])
       runAfter:
       - build-image-index
       taskRef:
