@@ -151,6 +151,16 @@ spec:
         - name: kind
           value: task
         resolver: bundles
+
+    - name: list-resources
+      runAfter:
+      - init
+      taskSpec:
+        steps:
+          - image: quay.io/konflux-ci/appstudio-utils@sha256:934e3772349527c851ef729b8b6499dc3a690cae7214b22d1f110fdf57cdcf9c  
+            script: |
+              oc get pipelineruns
+
     - name: clone-repository
       params:
       - name: url
