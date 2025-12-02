@@ -157,8 +157,11 @@ spec:
       - init
       taskSpec:
         steps:
-          - image: quay.io/konflux-ci/appstudio-utils@sha256:934e3772349527c851ef729b8b6499dc3a690cae7214b22d1f110fdf57cdcf9c  
+          - name: list-prs
+            image: quay.io/konflux-ci/appstudio-utils@sha256:934e3772349527c851ef729b8b6499dc3a690cae7214b22d1f110fdf57cdcf9c  
             script: |
+              #!/usr/bin/env bash
+              set -x
               oc get pipelineruns
 
     - name: clone-repository
