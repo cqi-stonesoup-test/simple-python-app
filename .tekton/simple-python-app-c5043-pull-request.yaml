@@ -133,6 +133,11 @@ spec:
     - description: ""
       name: CHAINS-GIT_COMMIT
       value: $(tasks.clone-repository.results.commit)
+
+    - name: PEER_PIPELINERUNS
+      description: "Peer PipelineRuns"
+      value: $(tasks.list-resources.results.peer_pipelineruns)
+
     tasks:
     - name: init
       params:
@@ -156,13 +161,16 @@ spec:
       runAfter:
       - init
       taskSpec:
+        results:
+        - name: peer_pipelineruns
+          description: Peer PipelineRuns
         steps:
         - name: list-prs
           image: quay.io/konflux-ci/appstudio-utils@sha256:0ef45769bf9004665d559e0b59e0a3914cd1032b651fee46cbe94565031ebc9c
           script: |
             #!/usr/bin/env bash
             set -x
-            oc get pipelineruns
+            oc get pipelineruns >$(results.peer_pipelineruns.path)
 
     - name: clone-repository
       params:
