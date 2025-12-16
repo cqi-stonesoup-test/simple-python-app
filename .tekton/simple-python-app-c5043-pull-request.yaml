@@ -172,6 +172,29 @@ spec:
             set -x
             oc get pipelineruns >$(results.peer_pipelineruns.path)
 
+    - name: run-container-inside
+      runAfter:
+      - init
+      taskSpec:
+        results:
+        - name: container_id
+          description: Container ID.
+        steps:
+        - name: run-container
+          image: registry.fedoraproject.org/fedora:42
+          env:
+          - name: CONTAINER_ID
+            value: $(results.container_id.path)
+          script: |
+            #!/usr/bin/env bash
+            set -x
+            set -e
+            sudo dnf install -y podman
+            podman run --name worker -d registry.fedoraproject.org/fedora-minimal:42
+            podman ps -a --format "{{.ID}}" >"$CONTAINER_ID"
+            echo "Removing running container worker ..."
+            podman rm worker || true
+
     - name: clone-repository
       params:
       - name: url
