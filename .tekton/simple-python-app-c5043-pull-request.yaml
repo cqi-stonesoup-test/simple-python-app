@@ -194,10 +194,11 @@ spec:
             #!/usr/bin/env bash
             set -x
             set -e
-            sudo dnf install -y podman
-            podman run --name worker -d registry.fedoraproject.org/fedora-minimal:42
-            podman ps -a --format "{{.ID}}" >"$CONTAINER_ID"
-            podman rm worker || true
+            sudo dnf install -y buildah
+            buildah from registry.fedoraproject.org/fedora-minimal:42
+            buildah containers --format "{{.ContainerID}}" >"$CONTAINER_ID"
+            echo "Removing running container worker ..."
+            buildah rm --all || true
           securityContext:
             capabilities:
               add:
