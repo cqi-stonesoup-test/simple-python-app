@@ -183,6 +183,11 @@ spec:
         - name: run-container
           image: registry.fedoraproject.org/fedora:42
           env:
+          # Configure buildah so it can run inside a container
+          - name: BUILDAH_ISOLATION
+            value: chroot
+          - name: STORAGE_DRIVER
+            value: vfs
           - name: CONTAINER_ID
             value: $(results.container_id.path)
           script: |
@@ -194,6 +199,11 @@ spec:
             buildah containers --format "{{.ContainerID}}" >"$CONTAINER_ID"
             echo "Removing running container worker ..."
             buildah rm --all || true
+          securityContext:
+            capabilities:
+              add:
+              - SETFCAP
+
 
     - name: clone-repository
       params:
