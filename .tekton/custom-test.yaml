@@ -1,0 +1,36 @@
+kind: PipelineRun
+apiVersion: tekton.dev/v1
+metadata:
+  name: custom-tests
+  annotations:
+    build.appstudio.openshift.io/repo: https://github.com/cqi-stonesoup-test/simple-python-app?rev={{revision}}
+    build.appstudio.redhat.com/commit_sha: '{{revision}}'
+    build.appstudio.redhat.com/pull_request_number: '{{pull_request_number}}'
+    build.appstudio.redhat.com/target_branch: '{{target_branch}}'
+    pipelinesascode.tekton.dev/cancel-in-progress: "true"
+    pipelinesascode.tekton.dev/max-keep-runs: "3"
+    pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch
+      == "main"
+spec:
+  taskRunSpecs:
+  - pipelineTaskName: run-integration-tests
+    stepSpecs:
+      - name: run-tests
+        computeResources:
+          requests:
+            cpu: 2
+            memory: 4Gi
+          limits:
+            cpu: 2
+            memory: 4Gi
+  pipelineSpec:
+    # params:
+    #   - description: 'Snapshot of the application'
+    #     name: SNAPSHOT
+    #     type: string
+    tasks:
+      - name: run-test
+        image: registry.fedoraproject.org/fedora-minimal:42
+        script: |
+          echo run tests
+
