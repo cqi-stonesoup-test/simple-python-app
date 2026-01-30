@@ -1,0 +1,19 @@
+name: Test
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  run-tests:
+    name: run-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - run: |
+          which python3
+          python3 --version
+          python3.12 --version
+          python3.13 --version
+          python3.14 --version
