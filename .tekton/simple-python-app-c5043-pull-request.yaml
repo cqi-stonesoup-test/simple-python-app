@@ -183,7 +183,7 @@ spec:
           description: Container ID.
         steps:
         - name: run-container
-          image: registry.fedoraproject.org/fedora:42
+          image: registry.fedoraproject.org/fedora:45
           env:
           # Configure buildah so it can run inside a container
           - name: BUILDAH_ISOLATION
