@@ -597,7 +597,7 @@ spec:
         - name: name
           value: push-dockerfile-oci-ta
         - name: bundle
-          value: quay.io/konflux-ci/pull-request-builds:push-dockerfile-oci-ta-0.2@sha256:e0051eb33d4af264ea0cdb5ac028c7865d7f359cafab8f693a7d8542ca70491c
+          value: quay.io/konflux-ci/pull-request-builds:push-dockerfile-oci-ta-0.2@sha256:f1fcf823a32159cce6dbed275ac5f2a22e4bee87efcdd520387d19bcfc0bdf1c
         - name: kind
           value: task
         resolver: bundles
