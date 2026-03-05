@@ -168,7 +168,7 @@ spec:
           description: Peer PipelineRuns
         steps:
         - name: list-prs
-          image: quay.io/konflux-ci/appstudio-utils@sha256:2b004dc4b55529823e8994e33df0d80e3d1de610e116f830e2b6d5d6e5539186
+          image: quay.io/konflux-ci/appstudio-utils@sha256:909bce0cb502caa2ff5704cfce7eb4435ec75769e6f88d2dc3ffcda8c14f4209
           script: |
             #!/usr/bin/env bash
             set -x
