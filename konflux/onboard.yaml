@@ -1,0 +1,49 @@
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Application
+metadata:
+  name: simple-python-app
+  namespace: cqi-tenant
+spec:
+  displayName: Simple Python Application
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: simple-python-app
+  namespace: cqi-tenant
+  annotations:
+    build.appstudio.openshift.io/request: configure-pac
+    build.appstudio.openshift.io/pipeline: '{"name":"docker-build-oci-ta","bundle":"latest"}'
+    git-provider: github
+    git-provider-url: https://github.com
+spec:
+  application: simple-python-app
+  componentName: simple-python-app
+  source:
+    git:
+      revision: main
+      url: https://github.com/cqi-stonesoup-test/simple-python-app.git
+      dockerfileUrl: ./Containerfile
+      context: .
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: ImageRepository
+metadata:
+  annotations:
+    image-controller.appstudio.redhat.com/update-component-image: "true"
+  name: imagerepository-for-simple-python-app
+  namespace: cqi-tenant
+  labels:
+    appstudio.redhat.com/application: simple-python-app
+    appstudio.redhat.com/component: simple-python-app
+spec:
+  image:
+    name: cqi-tenant/simple-python-app
+    visibility: public
+  notifications:
+    - config:
+        url: https://bombino.api.redhat.com/v1/sbom/quay/push
+      event: repo_push
+      method: webhook
+      title: SBOM-event-to-Bombino
