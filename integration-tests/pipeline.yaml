@@ -16,7 +16,18 @@ spec:
     taskSpec:
       steps:
       - name: test
-        image: registry.access.redhat.com/ubi9/ubi-minimal@sha256:8d905a93f1392d4a8f7fb906bd49bf540290674b28d82de3536bb4d0898bf9d7
+        # image: quay.io/konflux-ci/task-runner:1.6.0@sha256:1abfe4e50d4e961d0fd9790202565f93ee650fe8dfc50932c94989acba10485f
+        image: registry.fedoraproject.org/fedora:42
         script: |
-          echo "will run podman ..."
-
+          set -x
+          dnf install --quiet --no-docs --disable-repo=fedora-cisco-openh264 -y podman
+          id
+          podman --version
+          podman run --rm registry.fedoraproject.org/fedora-minimal:42 echo hello
+        securityContext:
+          capabilities:
+            add:
+              - "SYS_ADMIN"
+              - "MKNOD"
+              - "SYS_CHROOT"
+              - "SETFCAP"
