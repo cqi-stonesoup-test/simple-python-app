@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: test
+spec:
+  params:
+  - name: SNAPSHOT
+    description: 'Snapshot of the application'
+    default: ''
+    type: string
+  tasks:
+  - name: test
+    params:
+    - name: SNAPSHOT
+      value: $(params.SNAPSHOT)
+    taskSpec:
+      steps:
+      - name: test
+        image: registry.access.redhat.com/ubi9/ubi-minimal@sha256:8d905a93f1392d4a8f7fb906bd49bf540290674b28d82de3536bb4d0898bf9d7
+        script: |
+          echo "will run podman ..."
+
