@@ -23,7 +23,7 @@ spec:
           dnf install --quiet --no-docs --disable-repo=fedora-cisco-openh264 -y podman
           id
           podman --version
-          podman run --rm registry.fedoraproject.org/fedora-minimal:42 echo hello
+          podman run --network none --rm registry.fedoraproject.org/fedora-minimal:42 echo hello
         securityContext:
           capabilities:
             add:
