@@ -26,8 +26,4 @@ spec:
           podman run --rm registry.fedoraproject.org/fedora-minimal:42 echo hello
         securityContext:
           capabilities:
-            add:
-              - "SYS_ADMIN"
-              - "MKNOD"
-              - "SYS_CHROOT"
-              - "SETFCAP"
+            privileged: true
