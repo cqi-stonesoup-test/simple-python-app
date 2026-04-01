@@ -24,6 +24,7 @@ spec:
           id
           podman --version
           podman run \
+            --cgroups=disabled \
             --network none \
             --storage-driver vfs \
             --rm registry.fedoraproject.org/fedora-minimal:42 echo hello
@@ -31,3 +32,5 @@ spec:
           capabilities:
             add:
               - "SETFCAP"
+          runAsUser: 1000
+          runAsGroup: 1000
