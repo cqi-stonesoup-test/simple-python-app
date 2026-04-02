@@ -23,15 +23,27 @@ spec:
           set -x
           # dnf install --quiet --no-docs --disable-repo=fedora-cisco-openh264 -y podman
           id
-          podman --version
-          podman run \
-            --cgroups=disabled \
-            --network none \
-            --storage-driver vfs \
-            --rm registry.fedoraproject.org/fedora-minimal:42 echo hello
+          # podman --version
+          # podman run \
+          #   --cgroups=disabled \
+          #   --network none \
+          #   --storage-driver vfs \
+          #   --rm registry.fedoraproject.org/fedora-minimal:42 echo hello
+        # securityContext:
+        #   capabilities:
+        #     add:
+        #       - "SETFCAP"
+        #   runAsUser: 1000
+        #   runAsGroup: 1000
+      sidecars:
+      - name: zot-registry
+        image: ghcr.io/project-zot/zot-minimal:v2.1.11
+
+      - name: its-runner
+        image: quay.io/tkdchen/its-runner:latest
+        script: |
+          id
+          podman version
+          podman run --rm registry.fedoraproject.org/fedora-minimal:42 echo hello
         securityContext:
-          capabilities:
-            add:
-              - "SETFCAP"
-          runAsUser: 1000
-          runAsGroup: 1000
+          privileged: true
