@@ -45,5 +45,3 @@ spec:
           id
           podman version
           podman run --rm registry.fedoraproject.org/fedora-minimal:42 echo hello
-        securityContext:
-          privileged: true
